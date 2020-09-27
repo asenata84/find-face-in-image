@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Find a face in image</title>
+  <script src="https://www.rocksetta.com/tensorflowjs/saved-models/face-api-js/face-api.js"></script>
+  <script src="./detect.js"></script>
+  <style>
+    body {
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    #overlayImage,
+    #overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-sizing: border-box;
+      border: 4px dotted red;
+    }
+
+    #inputImage {
+      width: auto;
+      height: 100%;
+    }
+
+    #statusMessage {
+      color: green;
+      padding-left: 24px;
+    }
+
+    .imageContainer {
+      box-shadow: 0px 0px 10px #000;
+      border-radius: 5px;
+      display: inline-block;
+      position: relative;
+      width: auto;
+      height: 320px;
+      margin-right: 12px;
+    }
+
+    .videoContainer {
+      box-shadow: 0px 0px 10px #000;
+      border-radius: 5px;
+      display: inline-block;
+      position: relative;
+      margin-left: 12px;
+      width: auto;
+      height: 320px;
+    }
+
+    .error {
+      border: 2px solid red;
+    }
+
+    .match {
+      border: 2px solid green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Find a face in image</h1>
+  <p>1. Start the project with web server. If you using VSCode you can use live server extention. After install it right
+    click on `index.html` file and then `Open with live server`</p>
+  <p>2. Allow to the browser accessing your camera</p>
+  <p>3. Select an image from your PC</p>
+
+  <input type="file" id="files" name="img" accept="image/*">
+
+  <br />
+  <br />
+
+  <div class="container imageContainer">
+    <img id="inputImage" src="./public/images/faces.jpg" />
+    <canvas id="overlayImage"></canvas>
+  </div>
+
+  <div class="container videoContainer">
+    <video onplay="onPlay()" id="inputVideo" autoplay muted style="width: auto; height: 320px"></video><br>
+    <canvas id="overlay"></canvas>
+  </div>
+
+  <h2 id="statusMessage"></h2>
+</body>
+
+</html>
